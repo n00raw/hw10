@@ -176,8 +176,7 @@
 <h2 id="task-1-json-mode-extraction">Task 1: JSON Mode Extraction</h2>
 <ul>
 <li><p>Code: <code>json_mode_schema.py</code></p></li>
-<li><p>Example run:</p>
-<p>RAW JSON:
+<li><p>Example run: RAW JSON:
 {“currency”:“USD”,“customer”:{“email”:“sarah.johnson@example.com”,“name”:“Sarah
 Johnson”},“items”:[{“name”:“Water
 Bottle”,“price”:12.5,“qty”:2,“sku”:“WB001”},{“name”:“Carrying
@@ -190,16 +189,33 @@ Pouch”,“price”:5,“qty”:1,“sku”:“CP001”}],“order_id”:“A-1
 </ul>
 <h2 id="task-3-currency-mini-agent">Task 3: Currency Mini-Agent</h2>
 <ul>
-<li><p>Code: <code>tc_complete_currency.py</code></p></li>
-<li><p>Example run:</p>
-<p>=== INTERMEDIATE (turn 1) === name: convert arguments:
-{“amount”:100,“base”:“USD”,“quote”:“THB”} FINAL: The result of
-converting 100 USD to THB is 3500.0 THB. === INTERMEDIATE (turn 1) ===
-name: convert arguments: {“amount”:250,“base”:“THB”,“quote”:“EUR”} ===
+<li>Code: <code>tc_complete_currency.py</code></li>
+<li>Test Case: ex.run(“Convert 100 USD to THB”) ex.run(“Convert 250 THB
+to USD”) ex.run(“Convert 50 USD to EUR”) ex.run(“Convert 10 JPY to USD”)
+ex.run(“Convert 0 USD to EUR”)</li>
+<li>result: === INTERMEDIATE (turn 1) === name: convert arguments:
+{“amount”:100,“base”:“USD”,“quote”:“THB”} FINAL: The conversion of 100
+USD to THB is 3500 THB based on the fixed RATE_TABLE. === INTERMEDIATE
+(turn 1) === name: convert arguments:
+{“amount”:250,“base”:“THB”,“quote”:“USD”} FINAL: The result of the
+conversion is 7.15 USD. === INTERMEDIATE (turn 1) === name: convert
+arguments: {“amount”:50,“base”:“USD”,“quote”:“EUR”} FINAL: The
+conversion of 50 USD to EUR is 46.0 EUR. === INTERMEDIATE (turn 1) ===
+name: convert arguments: {“amount”:10,“base”:“JPY”,“quote”:“USD”} ===
 INTERMEDIATE (turn 2) === name: resolve_currency arguments:
-{“name_or_code”:“baht”} FINAL: The EUR is the quote currency, and the
-base currency is THB. To convert 250 baht to euros, we use the
-RATE_TABLE. The result is 6.25 euros.</p></li>
+{“name_or_code”:“JPY”} === INTERMEDIATE (turn 3) === name:
+resolve_currency arguments: {“name_or_code”:“USD”} === INTERMEDIATE
+(turn 4) === name: list_supported arguments: null FINAL: The function
+calls provided do not allow me to perform real-time currency conversion
+or obtain the latest exchange rates. However, I can tell you that the
+Japanese yen (JPY) and United States dollar (USD) are both supported
+currencies. To convert 10 JPY to USD, you would typically need to know
+the current exchange rate. If you provide the current exchange rate, I
+can help you calculate the conversion. Alternatively, you can use a
+reliable currency conversion service or website to get the most
+up-to-date exchange rate. === INTERMEDIATE (turn 1) === name: convert
+arguments: {“amount”:0,“base”:“USD”,“quote”:“EUR”} FINAL: The result of
+converting 0 USD to EUR is 0.0 EUR.</li>
 </ul>
 </body>
 </html>
